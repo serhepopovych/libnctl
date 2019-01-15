@@ -148,9 +148,25 @@ nctl_return()
 }
 declare -fr nctl_return
 
+# Usage: nctl_get_rc
+nctl_get_rc()
+{
+	return ${PIPESTATUS[0]}
+}
+declare -fr nctl_get_rc
+
+# Usage: nctl_set_rc <val>
+nctl_set_rc()
+{
+	local -i rc=$1
+	return $rc
+}
+declare -fr nctl_set_rc
+
 # Usage: nctl_inc_rc <var>
 nctl_inc_rc()
 {
+	nctl_get_rc
 	local -i nctl_inc_rc_rc=$?
 
 	local nctl_inc_rc_var="${1:?missing 1st argument to function \"$FUNCNAME\" (var)}"
