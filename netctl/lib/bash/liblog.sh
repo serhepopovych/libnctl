@@ -6,7 +6,7 @@ declare -r __included_liblog_sh=1
 # External tool dependencies, MUST always be defined,
 # even if empty (e.g.: declare -a crt1_request_tools_list=())
 declare -a crt1_request_tools_list=(
-	'date'		# data(1)
+	'date'		# date(1)
 )
 
 # Source startup code
