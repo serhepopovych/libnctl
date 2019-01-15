@@ -129,6 +129,8 @@ startup code in "%s" script.' \
 	fi
 
 	for tool in "$@"; do
+		[ -n "$tool" ] || continue
+
 		# Try to find tool
 		{
 			hash -t "$tool" || hash "$tool"
@@ -161,8 +163,17 @@ declare -fr crt1_request_tools
 # uses it to find tools.
 export PATH='/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin'
 
-### Ensure tools on which calling script depends found in system
-crt1_request_tools "${crt1_request_tools_list[@]}" hostname cat id getent
+# Ensure tools on which calling script depends found in system
+crt1_request_tools "${crt1_request_tools_list[@]}" ${NCTL_RUNAS:+sudo} \
+	hostname cat id getent
+
+# Re-exec itself as given user
+if [ -z "$NCTL_IN_RUNAS" -a -n "$NCTL_RUNAS" ]; then
+	exec sudo -u "$NCTL_RUNAS" NCTL_IN_RUNAS=y "$0" "$@"
+	crt1_fatal '' \
+'Re-exec itself with `sudo -u "%s" "%s" ...` failed.' \
+		"$NCTL_RUNAS" "$0"
+fi
 
 ### Initialize/Setup common variables
 
