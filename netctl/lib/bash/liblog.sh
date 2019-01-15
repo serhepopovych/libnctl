@@ -114,16 +114,15 @@ declare -fr nctl_log_msg
 # Example: echo 'message' |nctl_log_pipe
 nctl_log_pipe()
 {
-	local -i rc=$?
 	# Should we log anything?
-	nctl_is_no "$NCTL_LOG_ENABLE" && return $rc
+	nctl_is_no "$NCTL_LOG_ENABLE" && return
 	# Read from stdin and log messages
 	local r
 	while IFS= read -r r; do
-		nctl_log_msg "%s\n" "$r"
+		nctl_log_msg '%s\n' "$r"
 		nctl_is_yes "$NCTL_LOG_PIPE_TEE" && printf '%s\n' "$r"
 	done
-	return $rc
+	return 0
 }
 declare -fr nctl_log_pipe
 
