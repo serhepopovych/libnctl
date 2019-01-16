@@ -1,0 +1,75 @@
+libnctl - bash helper library for netctl project
+================================================
+
+There is set of libraries each of which implements specific routines:
+
+  # Bootstrap code must be sourced first, requires crt1_request_tools_list
+  # array to be defined with external tool names used by the executable
+  # script or library.
+  crt1.sh
+
+  # Action accounting support using logging library (liblog.sh) infrastructure.
+  # Can be useful in situations where both accounting (or normal logging) and
+  # debug logging should work together and written in different files.
+  libacct.sh
+
+  # Boolean functions like nctl_is_yes() and nctl_is_no()
+  libbool.sh
+
+  # File operations, high level routines using low-level bash interface to
+  # open/close files and returning file descriptor, walk trough directory
+  # entries or lines read from file executing specific callback,
+  # backup/restore/cleanup routines.
+  libfile.sh
+
+  # IPv4, IPv6 and MAC address validation routines
+  libinet.sh
+
+  # Iterators to walk through list of elements calling given function.
+  libiter.sh
+
+  # Logging infrastructure. Helper routines to open/close logging to file and/or
+  # standard output, tee-like copy of standard output/error stream from program
+  # to file and/or standard output.
+  liblog.sh
+
+  # Access to name service information like entries in /etc/passwd, shadow
+  # passwords, /etc/ethers etc.
+  libnss.sh
+
+  # Work with PID files and subsystem locking/unlocking API.
+  libprocess.sh
+
+  # Access Run-Time-Type-Information in bash environment. Detect type of object
+  # (e.g. function, builtin, external binary, etc), return more than one
+  # argument from the function, get/set elements or entire array or single
+  # variable with optional checking.
+  librtti.sh
+
+  # Work with signal handling in bash. Implements nctl_trap() and nctl_untrap()
+  # helpers that are build on top of low-level bash 'trap' functionality.
+  libsignal.sh
+
+  # String operations like changing all case of chars tolower/toupper, strip
+  # whitespace or any other pattern, normalize any text to bash variable name,
+  # split string to a set of substrings using strsep(2) like functionality.
+  libstring.sh
+
+  # Framework to implement service management (e.g. start/stop/status). Now
+  # mostly obsolete in favour of systemd(1), supervisor(1), openrc(1) and
+  # other service management routines. Was used in the past to extend and
+  # unify initscripts functionality on sysvinit based systems.
+  libsvc.sh
+
+Through the library some of OOP principles respected when possible allowing to
+overload functionality, inheriting existing, etc.
+
+Provided API is mostly deprecated and should not be used in new projects due
+to following reasons:
+
+  1) they use bash specific functionality that may require bash v4 or higher
+  2) performance sacrificed for API unification (e.g. assinging array directly
+     cheaper than calling generic nctl_set_val() helper).
+
+Support is still provided as this library is a base for other netctl projects.
+Library could be a good example of approaches and techniques in bash scripting.
