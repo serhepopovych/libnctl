@@ -15,13 +15,13 @@ declare -a crt1_request_tools_list=(
 )
 
 # Source startup code
-. /netctl/lib/bash/crt1.sh
+. @dest@/netctl/lib/bash/crt1.sh
 
 # Source functions libraries
-. /netctl/lib/bash/libbool.sh
-. /netctl/lib/bash/librtti.sh
-. /netctl/lib/bash/libiter.sh
-. /netctl/lib/bash/libstring.sh
+. @dest@/netctl/lib/bash/libbool.sh
+. @dest@/netctl/lib/bash/librtti.sh
+. @dest@/netctl/lib/bash/libiter.sh
+. @dest@/netctl/lib/bash/libstring.sh
 
 # Standart stream file descriptors
 declare -ir NCTL_STDIN=0 NCTL_STDOUT=1 NCTL_STDERR=2

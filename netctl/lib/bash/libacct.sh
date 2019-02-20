@@ -8,11 +8,11 @@ declare -r __included_libacct_sh=1
 declare -a crt1_request_tools_list=()
 
 # Source startup code
-. /netctl/lib/bash/crt1.sh
+. @dest@/netctl/lib/bash/crt1.sh
 
 # Source functions libraries
-. /netctl/lib/bash/libfile.sh
-. /netctl/lib/bash/liblog.sh
+. @dest@/netctl/lib/bash/libfile.sh
+. @dest@/netctl/lib/bash/liblog.sh
 
 # Control accounting facilities
 : ${NCTL_ACCOUNT_ENABLE:=y}

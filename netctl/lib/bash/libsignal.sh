@@ -8,10 +8,10 @@ declare -r __included_libsignal_sh=1
 declare -a crt1_request_tools_list=()
 
 # Source startup code
-. /netctl/lib/bash/crt1.sh
+. @dest@/netctl/lib/bash/crt1.sh
 
 # Source functions library
-. /netctl/lib/bash/librtti.sh
+. @dest@/netctl/lib/bash/librtti.sh
 
 # Usage: nctl_trap <new_sighandler> <old_sigspec_var> sigspec1 [sigspec2...]
 nctl_trap()

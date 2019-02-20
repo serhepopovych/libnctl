@@ -10,10 +10,10 @@ declare -a crt1_request_tools_list=(
 )
 
 # Source startup code
-. /netctl/lib/bash/crt1.sh
+. @dest@/netctl/lib/bash/crt1.sh
 
 # Source functions libraries
-. /netctl/lib/bash/librtti.sh
+. @dest@/netctl/lib/bash/librtti.sh
 
 # Usage: nctl_check_nss_entry <entry> <db> [<var>]
 nctl_check_nss_entry()

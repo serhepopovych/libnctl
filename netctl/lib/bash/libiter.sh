@@ -8,10 +8,10 @@ declare -r __included_libiter_sh=1
 declare -a crt1_request_tools_list=()
 
 # Source startup code
-. /netctl/lib/bash/crt1.sh
+. @dest@/netctl/lib/bash/crt1.sh
 
 # Source functions libraries
-. /netctl/lib/bash/librtti.sh
+. @dest@/netctl/lib/bash/librtti.sh
 
 # Usage: __nctl_action_for_each_pre <action> <item1> [<item2>...]
 # Scope: local, internal

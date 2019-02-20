@@ -10,12 +10,12 @@ declare -a crt1_request_tools_list=(
 )
 
 # Source startup code
-. /netctl/lib/bash/crt1.sh
+. @dest@/netctl/lib/bash/crt1.sh
 
 # Source functions libraries
-. /netctl/lib/bash/libbool.sh
-. /netctl/lib/bash/libfile.sh
-. /netctl/lib/bash/libprocess.sh
+. @dest@/netctl/lib/bash/libbool.sh
+. @dest@/netctl/lib/bash/libfile.sh
+. @dest@/netctl/lib/bash/libprocess.sh
 
 # Control logging facilities
 : ${NCTL_LOG_ENABLE:=y}

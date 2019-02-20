@@ -8,10 +8,10 @@ declare -r __included_libinet_sh=1
 declare -a crt1_request_tools_list=()
 
 # Source startup code
-. /netctl/lib/bash/crt1.sh
+. @dest@/netctl/lib/bash/crt1.sh
 
 # Source functions libraries
-. /netctl/lib/bash/libbool.sh
+. @dest@/netctl/lib/bash/libbool.sh
 
 #
 # MAC address manipulation routines

@@ -8,10 +8,10 @@ declare -r __included_libstring_sh=1
 declare -a crt1_request_tools_list=()
 
 # Source startup code
-. /netctl/lib/bash/crt1.sh
+. @dest@/netctl/lib/bash/crt1.sh
 
 # Source functions libraries
-. /netctl/lib/bash/librtti.sh
+. @dest@/netctl/lib/bash/librtti.sh
 
 #
 # Basic char/string operations

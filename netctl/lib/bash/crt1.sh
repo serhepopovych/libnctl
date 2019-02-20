@@ -210,7 +210,7 @@ argv=("$0" "$@")
 crt1_source_cfg "${BASH_SOURCE[0]}"
 
 # Location of the netctl library
-: ${NCTL_PREFIX:='/netctl'}
+: ${NCTL_PREFIX:='@dest@/netctl'}
 
 # Netctl library TMPDIR variable
 : ${NCTL_TMPDIR:="$NCTL_PREFIX/tmp"}
