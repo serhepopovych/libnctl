@@ -8,7 +8,7 @@ declare -r __included_libbool_sh=1
 declare -a crt1_request_tools_list=()
 
 # Source startup code
-. @dest@/netctl/lib/bash/crt1.sh
+. @target@/netctl/lib/bash/crt1.sh
 
 # Usage: nctl_is_yes <value>
 # Result: return 0 if value is one of (case insensitive): yes, on, true, 1

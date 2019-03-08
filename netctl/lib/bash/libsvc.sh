@@ -13,16 +13,16 @@ declare -a crt1_request_tools_list=(
 )
 
 # Source startup code
-. @dest@/netctl/lib/bash/crt1.sh
+. @target@/netctl/lib/bash/crt1.sh
 
 # Source functions library
-. @dest@/netctl/lib/bash/libbool.sh
-. @dest@/netctl/lib/bash/librtti.sh
-. @dest@/netctl/lib/bash/libiter.sh
-. @dest@/netctl/lib/bash/libstring.sh
-. @dest@/netctl/lib/bash/libfile.sh
-. @dest@/netctl/lib/bash/libprocess.sh
-. @dest@/netctl/lib/bash/libnss.sh
+. @target@/netctl/lib/bash/libbool.sh
+. @target@/netctl/lib/bash/librtti.sh
+. @target@/netctl/lib/bash/libiter.sh
+. @target@/netctl/lib/bash/libstring.sh
+. @target@/netctl/lib/bash/libfile.sh
+. @target@/netctl/lib/bash/libprocess.sh
+. @target@/netctl/lib/bash/libnss.sh
 
 # SysV Debian/Ubuntu initscripts function library
 declare -F log_daemon_msg &>/dev/null || . /lib/lsb/init-functions

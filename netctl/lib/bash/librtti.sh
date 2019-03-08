@@ -8,10 +8,10 @@ declare -r __included_librtti_sh=1
 declare -a crt1_request_tools_list=()
 
 # Source startup code
-. @dest@/netctl/lib/bash/crt1.sh
+. @target@/netctl/lib/bash/crt1.sh
 
 # Source functions libraries
-. @dest@/netctl/lib/bash/libstring.sh
+. @target@/netctl/lib/bash/libstring.sh
 
 #
 # RTTI
