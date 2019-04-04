@@ -169,10 +169,12 @@ crt1_request_tools "${crt1_request_tools_list[@]}" ${NCTL_RUNAS:+sudo} \
 
 # Re-exec itself as given user
 if [ -z "$NCTL_IN_RUNAS" -a -n "$NCTL_RUNAS" ]; then
-	exec sudo -u "$NCTL_RUNAS" NCTL_IN_RUNAS=y "$0" "$@"
-	crt1_fatal '' \
-'Re-exec itself with `sudo -u "%s" "%s" ...` failed.' \
-		"$NCTL_RUNAS" "$0"
+	if eval "[ ~ != ~$NCTL_RUNAS ]"; then
+		exec sudo -u "$NCTL_RUNAS" NCTL_IN_RUNAS=y "$0" "$@"
+		crt1_fatal '' \
+			'Re-exec itself with `sudo -u "%s" "%s" ...` failed.' \
+			"$NCTL_RUNAS" "$0"
+	fi
 fi
 
 ### Initialize/Setup common variables
