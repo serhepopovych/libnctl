@@ -387,3 +387,53 @@ nctl_paths_expand_a()
 	return $npea_rc
 }
 declare -fr nctl_paths_expand_a
+
+# Usage: nctl_args2pat <var> [<sep>] <val1>...
+nctl_args2pat()
+{
+	local nap_var="${1:?missing 1st argument to \"$FUNCNAME\" (var)}"
+	local nap_sep="${2:-|}"
+	shift 2
+	local nap_pat
+
+	nap_pat="$nap_sep"
+	while [ $# -gt 0 ]; do
+		[ -z "${nap_pat##*$nap_sep$1$nap_sep*}" ] ||
+			nap_pat="$nap_pat$1$nap_sep"
+		shift
+	done
+
+	nctl_set_val "$nap_var" "$nap_pat"
+}
+declare -fr nctl_args2pat
+
+# Usage: nctl_mtch4pat <var> [<sep>] <pat> <str1>...
+nctl_mtch4pat()
+{
+	local nmp_var="$1"
+	local nmp_sep="${2:-|}"
+	local nmp_pat="${3:?missing 3rd argument to \"$FUNCNAME\" (pat)}"
+	shift 3
+	local nmp_mtch="$nmp_sep"
+	local -a nmp_items=()
+	local -i nmp_i=0
+	local -i nmp_rc=0
+
+	while [ $# -gt 0 ]; do
+		if [ -z "${nmp_pat##*$nmp_sep$1$nmp_sep*}" ]; then
+			[ -n "${nmp_mtch##*$nmp_sep$1$nmp_sep*}" ] ||
+				continue
+			nmp_mtch="$nmp_mtch$1$nmp_sep"
+			nmp_items[$((nmp_i++))]="$1"
+		else
+			nmp_rc=1
+			[ -n "$nmp_var" ] || break
+		fi
+		shift
+	done
+
+	[ $nmp_rc -eq 0 ]
+
+	nctl_return "$nmp_var" "${nmp_items[@]}"
+}
+declare -fr nctl_mtch4pat
